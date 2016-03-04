@@ -55,5 +55,14 @@ public class IterateValuesMapValues {
 			sum += value;
 		}
 		return sum;
-	}	
+	}
+	
+	@Benchmark
+	public long sumRandomAccessOverList() {
+		long sum = 0;
+		for (int a=0; a<list.size(); a++) {
+			sum += list.get(a);
+		}
+		return sum;
+	}
 }
