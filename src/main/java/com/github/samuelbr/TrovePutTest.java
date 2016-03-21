@@ -25,7 +25,7 @@ import gnu.trove.map.hash.THashMap;
 @Fork(3)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-public class TroveGetTest {
+public class TrovePutTest {
 
 	@Param({"1", "10", "100", "1000", "10000"})
     int size;
@@ -38,24 +38,19 @@ public class TroveGetTest {
 	public void setup() {
 		map = new HashMap<String, Object>();
 		tmap = new THashMap<String, Object>();
-		
-		for (int i=0; i<size; i++) {
-			map.put(Integer.toString(i), i);
-			tmap.put(Integer.toString(i), i);
-		}
 	}
 	
 	@Benchmark
 	public void testMap(Blackhole bh) {
 		for (int i=0; i<size; i++) {
-			bh.consume(map.get(Integer.toString(i)));
+			bh.consume(map.put(Integer.toString(i), i));
 		}
 	}
 	
 	@Benchmark
 	public void testTroveMap(Blackhole bh) {
 		for (int i=0; i<size; i++) {
-			bh.consume(tmap.get(Integer.toString(i)));
+			bh.consume(tmap.put(Integer.toString(i), i));
 		}
 	}
 }
