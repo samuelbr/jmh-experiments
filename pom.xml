@@ -61,6 +61,13 @@ THE POSSIBILITY OF SUCH DAMAGE.
             <version>${jmh.version}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>net.sf.trove4j</groupId>
+    		<artifactId>trove4j-light</artifactId>
+    		<version>3.0</version>
+        </dependency>
+        
     </dependencies>
 
     <properties>
